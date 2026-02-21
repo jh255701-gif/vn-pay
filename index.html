@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>베트남 여행 가계부</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2 class="main-title">
+            <svg class="vietnam-flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                <rect width="30" height="20" fill="#da251d"/>
+                <polygon points="15,4 16.18,8.64 21,8.64 17.1,11.36 18.27,16 15,13.12 11.73,16 12.9,11.36 9,8.64 13.82,8.64" fill="#ffff00"/>
+            </svg>
+            베트남 여행 가계부 by 후니
+        </h2>
+        
+        <div class="input-card">
+            <input type="text" id="desc" placeholder="내역을 입력하세요" autocomplete="off">
+            <div class="currency-toggle">
+                <button type="button" id="btn-vnd" class="active" onclick="setCurrency('VND')">VND (동)</button>
+                <button type="button" id="btn-krw" onclick="setCurrency('KRW')">KRW (원)</button>
+            </div>
+            <input type="number" id="amount" placeholder="금액 입력">
+            <button id="save-btn" onclick="saveData()">내역 저장하기</button>
+            
+            <div class="export-btns">
+                <button onclick="exportToExcel()">📊 엑셀 저장</button>
+                <button onclick="exportToPDF()">📄 PDF 저장</button>
+            </div>
+        </div>
+
+        <div class="list-container">
+            <div class="list-header">
+                <span class="head-title">최신 지출 내역</span>
+                <span class="head-total">총 <strong id="total-sum">0</strong>원</span>
+            </div>
+            <ul id="expense-list"></ul>
+        </div>
+
+        <div id="pdf-hidden-area" style="display: none;">
+            <h2 style="text-align: center; color: #cc3333; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <svg width="30" height="20" viewBox="0 0 30 20">
+                    <rect width="30" height="20" fill="#da251d"/>
+                    <polygon points="15,4 16.18,8.64 21,8.64 17.1,11.36 18.27,16 15,13.12 11.73,16 12.9,11.36 9,8.64 13.82,8.64" fill="#ffff00"/>
+                </svg>
+                베트남 여행 지출 보고서 by 후니
+            </h2>
+            <p id="pdf-date" style="text-align: right; font-size: 12px; color: #666;"></p>
+            <table class="pdf-table">
+                <thead>
+                    <tr>
+                        <th>날짜/시간</th>
+                        <th>지출 내역</th>
+                        <th>현지 금액</th>
+                        <th>원화 환산</th>
+                    </tr>
+                </thead>
+                <tbody id="pdf-table-body"></tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" style="text-align: right; font-weight: bold;">총 합계:</td>
+                        <td id="pdf-total-krw" style="font-weight: bold; color: #cc3333;"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

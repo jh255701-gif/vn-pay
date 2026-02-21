@@ -1,0 +1,37 @@
+body { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; background: #f5f7fa; margin: 0; padding: 20px; display: flex; justify-content: center; }
+#app { width: 100%; max-width: 420px; }
+
+.main-title { 
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    color: #cc3333; margin-bottom: 25px; font-size: 20px; word-break: keep-all; 
+}
+.vietnam-flag { width: 32px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+.input-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 25px; display: flex; flex-direction: column; gap: 10px; }
+input { padding: 12px; border: 1px solid #eee; border-radius: 8px; font-size: 15px; outline: none; }
+.currency-toggle { display: flex; gap: 5px; }
+.currency-toggle button { flex: 1; padding: 10px; border: 1px solid #eee; background: white; border-radius: 8px; cursor: pointer; font-weight: bold; color: #666; }
+.currency-toggle button.active { background: #cc3333; color: white; border-color: #cc3333; }
+
+#save-btn { padding: 14px; background: #333; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+.export-btns { display: flex; gap: 5px; }
+.export-btns button { flex: 1; padding: 10px; font-size: 13px; border: 1px solid #ddd; border-radius: 8px; background: #fff; cursor: pointer; color: #555; }
+
+.list-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; padding: 0 5px; }
+.head-total { color: #cc3333; font-weight: bold; font-size: 16px; }
+
+ul { list-style: none; padding: 0; }
+li { background: white; padding: 15px; border-radius: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+
+.item-name { font-weight: bold; font-size: 16px; color: #222; }
+.item-date { font-size: 11px; color: #999; margin-top: 2px; }
+
+.item-price { text-align: right; display: flex; align-items: center; gap: 10px; }
+.p-main { color: #007bff; font-weight: bold; font-size: 15px; }
+.p-sub { color: #ff6633; font-size: 11px; font-weight: 600; }
+
+.del-btn { border: none; background: #f0f0f0; color: #ccc; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+.pdf-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12px; }
+.pdf-table th, .pdf-table td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+.pdf-table th { background-color: #f8f8f8; color: #333; }
